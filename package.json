@@ -1,8 +1,10 @@
 {
-  "name": "@altyrex/root",
+  "name": "@crafts/root",
   "version": "0.1.0",
-  "description": "Minimal monorepo with polyglot support.",
-  "scripts": {},
+  "description": "A place for crafting ideas and documenting the results.",
+  "scripts": {
+    "run:local:app": "pnpm run --filter @playgrounds/react-feature-pattern run:local:app"
+  },
   "keywords": [
     "monorepo",
     "pnpm",

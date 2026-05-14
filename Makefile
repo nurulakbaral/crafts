@@ -1,4 +1,4 @@
 api-rust:
-	cargo run --package api
+	cargo run --package axum_authentication
 api-go:
-	go run ./internal/api
+	go run ./playgrounds/go-resumable-uploads/main.go
