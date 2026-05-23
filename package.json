@@ -3,7 +3,8 @@
 	"version": "0.1.0",
 	"description": "A place for crafting ideas and documenting the results.",
 	"scripts": {
-		"run:local:app": "pnpm run --filter @playgrounds/react-feature-pattern run:local:app",
+		"run:local:rfp": "pnpm run --filter @playgrounds/react-feature-pattern run:local:app",
+		"run:local:agui": "pnpm run --filter @playgrounds/agentic-ui run:local:app",
 		"prepare": "husky"
 	},
 	"keywords": [
@@ -17,11 +18,23 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.4.15",
 		"@tailwindcss/vite": "^4.3.0",
+		"@tanstack/react-query-devtools": "^5.100.13",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.0.5",
+		"postcss": "^8.5.15",
+		"postcss-preset-mantine": "^1.18.0",
+		"postcss-simple-vars": "^7.0.1",
 		"tailwindcss": "^4.3.0"
 	},
 	"dependencies": {
-		"react-router": "^7.15.1"
+		"@mantine/core": "^9.2.1",
+		"@mantine/hooks": "^9.2.1",
+		"@tanstack/react-query": "^5.100.13",
+		"axios": "^1.16.1",
+		"clsx": "^2.1.1",
+		"immer": "^11.1.8",
+		"react-router": "^7.15.1",
+		"tailwind-merge": "^3.6.0",
+		"zustand": "^5.0.13"
 	}
 }

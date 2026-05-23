@@ -1,2 +1,3 @@
 packages:
+  - "playgrounds/agentic-ui"
   - "playgrounds/react-feature-pattern"
