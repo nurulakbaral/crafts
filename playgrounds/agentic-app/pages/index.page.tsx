@@ -1,5 +1,5 @@
 import { useChat } from "@ai-sdk/react";
-import { Box, Stack } from "@mantine/core";
+import { Box, Stack, Text } from "@mantine/core";
 import { DefaultChatTransport } from "ai";
 import { motion } from "motion/react";
 import { Composer, Greetings, Messages } from "~/components";
@@ -23,23 +23,25 @@ export default function App() {
 			<motion.div
 				initial={false}
 				className={cx(
-					"w-full flex flex-col items-center gap-9 overflow-hidden",
+					"w-full bg-white flex flex-col items-center gap-9 overflow-hidden",
 					!storeConv.streaming && "pt-44",
-					storeConv.streaming && "sticky top-[calc(100vh-11rem)] bottom-0",
+					storeConv.streaming && "sticky top-[calc(100vh-10rem)] bottom-0",
 					storeConv.streaming && "pb-0",
 				)}
 				animate={{
-					height: storeConv.streaming ? "11rem" : "100vh",
+					height: storeConv.streaming ? "10rem" : "100vh",
 				}}
 				transition={{ type: "spring", stiffness: 360, damping: 36 }}
 			>
 				{!storeConv.streaming && <Greetings />}
 
-				<Composer
-					className={cx(storeConv.streaming && "h-44")}
-					conversation={true}
-					onSend={(text) => sendMessage({ text })}
-				/>
+				<Stack gap={12}>
+					<Composer className={cx("h-fit")} conversation={true} onSend={(text) => sendMessage({ text })} />
+
+					{storeConv.streaming && (
+						<Text className="text-center text-sm text-gray-600">AgentAI can make mistakes. Check important info.</Text>
+					)}
+				</Stack>
 			</motion.div>
 		</Box>
 	);

@@ -90,7 +90,7 @@ function ComposerMessage({ ...props }: TComposerMessageProps) {
 			classNames={{ input: "outline-none border-none text-base bg-gray-100" }}
 			placeholder="Ask anything"
 			autosize
-			minRows={2}
+			minRows={1}
 			maxRows={16}
 			{...props}
 		/>
@@ -120,7 +120,7 @@ export function Composer({ conversation, onSend, className }: TComposerProps) {
 		>
 			<ComposerMessage value={message} onChange={(e) => setMessage(e.target.value)} />
 
-			<Group gap={8}>
+			<Group className="h-full" gap={8}>
 				<ComposerModel />
 
 				<ComposerSend
