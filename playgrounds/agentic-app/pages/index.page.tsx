@@ -24,13 +24,13 @@ export default function App() {
 			<motion.div
 				initial={false}
 				className="fixed inset-x-0 bottom-0 z-10 flex justify-center overflow-hidden bg-white px-4"
-				animate={{ height: storeConv.streaming ? "10rem" : "100dvh" }}
+				animate={{ height: storeConv.streaming ? "9rem" : "100dvh" }}
 				transition={composerTransition}
 			>
 				<motion.div
 					initial={false}
 					className="flex w-full max-w-172 flex-col items-center"
-					animate={{ y: storeConv.streaming ? 12 : 176 }}
+					animate={{ y: storeConv.streaming ? 0 : 176 }}
 					transition={composerTransition}
 				>
 					<AnimatePresence initial={false}>
@@ -48,8 +48,8 @@ export default function App() {
 						)}
 					</AnimatePresence>
 
-					<Stack className="w-full" gap={12}>
-						<Composer className="h-fit" conversation={true} onSend={(text) => sendMessage({ text })} />
+					<Stack className="w-full" gap={8}>
+						<Composer className="h-full" conversation={true} onSend={(text) => sendMessage({ text })} />
 
 						<AnimatePresence initial={false}>
 							{storeConv.streaming && (
@@ -60,7 +60,7 @@ export default function App() {
 									exit={{ height: 0, opacity: 0 }}
 									transition={{ duration: 0.18, ease: "easeOut" }}
 								>
-									<Text className="text-center text-sm text-gray-600">
+									<Text className="text-center text-xs text-gray-500">
 										AgentAI can make mistakes. Check important info.
 									</Text>
 								</motion.div>

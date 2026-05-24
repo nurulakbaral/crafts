@@ -118,9 +118,20 @@ export function Composer({ conversation, onSend, className }: TComposerProps) {
 				className,
 			)}
 		>
-			<ComposerMessage value={message} onChange={(e) => setMessage(e.target.value)} />
+			<ComposerMessage
+				value={message}
+				onChange={(e) => setMessage(e.target.value)}
+				onKeyDown={(event) => {
+					if (event.key === "Enter" && !event.shiftKey) {
+						event.preventDefault();
+						onSend(message);
+						setMessage("");
+						storeConv.setStreaming(true);
+					}
+				}}
+			/>
 
-			<Group className="h-full" gap={8}>
+			<Group className="h-full" gap={10}>
 				<ComposerModel />
 
 				<ComposerSend
