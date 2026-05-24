@@ -14,6 +14,8 @@ import {
 import { CheckIcon, CpuIcon } from "@phosphor-icons/react";
 import { ArrowUpIcon } from "@phosphor-icons/react/dist/ssr";
 import * as React from "react";
+import { cx } from "~/libraries";
+import { useStoreConv } from "~/stores";
 
 type TComposerSendProps = {} & ElementProps<"button"> & ActionIconProps;
 
@@ -93,20 +95,27 @@ function ComposerMessage({ ...props }: TComposerMessageProps) {
 	);
 }
 
-type TComposerProps = { onSend: (message: string) => void } & ElementProps<"div"> & StackProps;
+type TComposerProps = {
+	onSend: (message: string) => void;
+	conversation: boolean;
+} & ElementProps<"div"> &
+	StackProps;
 
-export function Composer({ onSend }: TComposerProps) {
+export function Composer({ conversation, onSend }: TComposerProps) {
+	const storeConv = useStoreConv();
 	const [message, setMessage] = React.useState("");
 
 	return (
-		<Stack gap={0} align="flex-end" className="w-160 border-2 rounded-2xl border-gray-100 py-4 px-3">
+		<Stack gap={0} align="flex-end" className={cx("w-160 border-2 rounded-2xl border-gray-100 bg-white py-4 px-3")}>
 			<ComposerMessage value={message} onChange={(e) => setMessage(e.target.value)} />
 
 			<Group gap={8}>
 				<ComposerModel />
+
 				<ComposerSend
 					onClick={() => {
 						onSend(message);
+						storeConv.setStreaming(!storeConv.streaming);
 					}}
 				/>
 			</Group>

@@ -1,15 +1,18 @@
 import { Box } from "@mantine/core";
 import type { UIMessage } from "ai";
 import { Streamdown } from "streamdown";
+import { fixtures } from "~/fixtures/messages.json.ts";
 
 export type TMessages = {
 	messages: Array<UIMessage>;
 };
 
+const messagesFixtures = fixtures.messages;
+
 export function Messages({ messages }: TMessages) {
 	return (
 		<Box className="w-160">
-			{messages.map((message) => (
+			{messagesFixtures.map((message) => (
 				<div key={message.id}>
 					{message.role === "user" ? "User: " : "AI: "}
 					{message.parts.map((part, index) =>
