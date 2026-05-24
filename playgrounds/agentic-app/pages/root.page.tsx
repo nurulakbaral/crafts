@@ -1,5 +1,6 @@
 import "~/assets/globals.css";
 import "streamdown/styles.css";
+import "~/assets/streamdown.css";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";

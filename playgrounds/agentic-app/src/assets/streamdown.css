@@ -1,0 +1,51 @@
+/* Custom heading styles */
+[data-streamdown="heading-1"] {
+	color: #1a202c;
+	border-bottom: 2px solid #e2e8f0;
+	padding-bottom: 0.5rem;
+}
+[data-streamdown="heading-2"] {
+	color: #1a202c;
+	margin-top: 2rem;
+}
+[data-streamdown="heading-3"] {
+	color: #1a202c;
+	margin-top: 2rem;
+}
+
+/* Custom link appearance */
+[data-streamdown="link"] {
+	color: #3182ce;
+	text-decoration: none;
+	border-bottom: 1px solid #90cdf4;
+	transition: border-color 0.2s;
+}
+[data-streamdown="link"]:hover {
+	border-bottom-color: #3182ce;
+}
+/* Custom code block styling */
+[data-streamdown="code-block"] {
+	border-radius: 0.5rem;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+/* Custom table styling */
+[data-streamdown="table"] {
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+[data-streamdown="table-header"] {
+	background: linear-gradient(to bottom, #f7fafc, #edf2f7);
+}
+/* Custom blockquote styling */
+[data-streamdown="blockquote"] {
+	background-color: #f7fafc;
+	border-left-color: #4299e1;
+	border-radius: 0.25rem;
+}
+
+[data-streamdown="horizontal-rule"] {
+	border: none;
+	height: 1px;
+	background-color: #e2e8f0;
+}
