@@ -4,7 +4,9 @@ import { createTheme, MantineProvider, type MantineProviderProps } from "@mantin
 // Theme
 // ------------------------------------------------------------------------------------------
 
-const Theme = createTheme({});
+const Theme = createTheme({
+	fontFamily: "Plus Jakarta Sans, Sora, sans-serif",
+});
 
 // ------------------------------------------------------------------------------------------
 // @MainComponent — Theme Provider

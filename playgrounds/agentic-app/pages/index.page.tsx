@@ -1,10 +1,14 @@
-import { Box, Button, Text } from "@mantine/core";
+import { Box, Stack } from "@mantine/core";
+import { Composer, Greetings } from "~/components";
 
 export default function App() {
 	return (
-		<Box className="text-center mt-20">
-			<Text className="mb-2">Hello World!</Text>
-			<Button>Get Started</Button>
+		<Box>
+			<Stack gap={36} className="w-full min-h-screen pt-54" align="center">
+				<Greetings />
+
+				<Composer />
+			</Stack>
 		</Box>
 	);
 }
