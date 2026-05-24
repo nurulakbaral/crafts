@@ -1,6 +1,7 @@
 import { useChat } from "@ai-sdk/react";
 import { Box, Stack } from "@mantine/core";
 import { DefaultChatTransport } from "ai";
+import { motion } from "motion/react";
 import { Composer, Greetings, Messages } from "~/components";
 import { cx } from "~/libraries";
 import { useStoreConv } from "~/stores";
@@ -14,24 +15,33 @@ export default function App() {
 	});
 
 	return (
-		<Box className="min-h-screen relative bg-gray-100">
-			<Stack className="w-full h-full" align="center">
+		<Box className="min-h-screen relative bg-white">
+			<Stack className={cx("w-full h-full", storeConv.streaming && "pb-10")} align="center">
 				{storeConv.streaming && <Messages messages={messages} />}
 			</Stack>
 
-			<Stack
-				gap={36}
+			<motion.div
+				initial={false}
 				className={cx(
-					"w-full bg-white pb-6 h-64",
-					!storeConv.streaming && "min-h-screen pt-56",
-					storeConv.streaming && "sticky top-[calc(100vh-calc(var(--spacing) * 64)] bottom-0 pt-6",
+					"w-full  flex flex-col items-center gap-9 overflow-hidden",
+					!storeConv.streaming && "pb-6",
+					storeConv.streaming && "sticky top-[calc(100vh-11rem)] bottom-0",
+					storeConv.streaming && "pb-0",
 				)}
-				align="center"
+				animate={{
+					height: storeConv.streaming ? "11rem" : "100vh",
+					paddingTop: storeConv.streaming ? "1.5rem" : "14rem",
+				}}
+				transition={{ type: "spring", stiffness: 260, damping: 32 }}
 			>
-				<Greetings />
+				{!storeConv.streaming && <Greetings />}
 
-				<Composer conversation={true} onSend={(text) => {}} />
-			</Stack>
+				<Composer
+					className={cx(storeConv.streaming && "h-full")}
+					conversation={true}
+					onSend={(text) => void sendMessage({ text })}
+				/>
+			</motion.div>
 		</Box>
 	);
 }

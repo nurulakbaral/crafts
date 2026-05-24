@@ -84,8 +84,10 @@ type TComposerMessageProps = {} & TextareaProps & ElementProps<"textarea">;
 function ComposerMessage({ ...props }: TComposerMessageProps) {
 	return (
 		<Textarea
-			className="w-full"
-			classNames={{ input: "outline-none border-none text-base" }}
+			name="composer"
+			id="composer"
+			className="w-full bg-gray-100"
+			classNames={{ input: "outline-none border-none text-base bg-gray-100" }}
 			placeholder="Ask anything"
 			autosize
 			minRows={2}
@@ -101,12 +103,20 @@ type TComposerProps = {
 } & ElementProps<"div"> &
 	StackProps;
 
-export function Composer({ conversation, onSend }: TComposerProps) {
+export function Composer({ conversation, onSend, className }: TComposerProps) {
 	const storeConv = useStoreConv();
 	const [message, setMessage] = React.useState("");
 
 	return (
-		<Stack gap={0} align="flex-end" className={cx("w-160 border-2 rounded-2xl border-gray-100 bg-white py-4 px-3")}>
+		<Stack
+			gap={0}
+			align="flex-end"
+			className={cx(
+				"border-2 rounded-2xl border-gray-100 bg-gray-100 py-4 px-3",
+				conversation ? "w-160" : "w-full",
+				className,
+			)}
+		>
 			<ComposerMessage value={message} onChange={(e) => setMessage(e.target.value)} />
 
 			<Group gap={8}>

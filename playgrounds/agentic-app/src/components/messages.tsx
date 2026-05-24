@@ -10,9 +10,11 @@ export type TMessages = {
 const messagesFixtures = fixtures.messages;
 
 export function Messages({ messages }: TMessages) {
+	const visibleMessages = messagesFixtures;
+
 	return (
 		<Box className="w-160">
-			{messagesFixtures.map((message) => (
+			{visibleMessages.map((message) => (
 				<div key={message.id}>
 					{message.role === "user" ? "User: " : "AI: "}
 					{message.parts.map((part, index) =>
