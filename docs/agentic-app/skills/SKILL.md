@@ -1,6 +1,6 @@
 ---
-title: Agentic UI
+title: Agentic App
 description: The interface for AI Agents
 ---
 
-# Agentic UI
+# Agentic App
