@@ -114,7 +114,7 @@ export function Composer({ conversation, onSend, className }: TComposerProps) {
 			align="flex-end"
 			className={cx(
 				"border-2 rounded-2xl border-gray-100 bg-gray-100 py-4 px-3",
-				conversation ? "w-172" : "w-full",
+				conversation ? "w-full max-w-172" : "w-full",
 				className,
 			)}
 		>

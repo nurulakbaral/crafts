@@ -8,7 +8,7 @@ export type TMessages = {
 
 export function Messages({ messages }: TMessages) {
 	return (
-		<Box className="w-160">
+		<Box className="w-full max-w-160">
 			{messages.map((message) => (
 				<div key={message.id}>
 					{message.role === "user" ? "User: " : "AI: "}
