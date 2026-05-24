@@ -23,23 +23,22 @@ export default function App() {
 			<motion.div
 				initial={false}
 				className={cx(
-					"w-full  flex flex-col items-center gap-9 overflow-hidden",
-					!storeConv.streaming && "pb-6",
+					"w-full flex flex-col items-center gap-9 overflow-hidden",
+					!storeConv.streaming && "pt-44",
 					storeConv.streaming && "sticky top-[calc(100vh-11rem)] bottom-0",
 					storeConv.streaming && "pb-0",
 				)}
 				animate={{
 					height: storeConv.streaming ? "11rem" : "100vh",
-					paddingTop: storeConv.streaming ? "1.5rem" : "14rem",
 				}}
-				transition={{ type: "spring", stiffness: 260, damping: 32 }}
+				transition={{ type: "spring", stiffness: 360, damping: 36 }}
 			>
 				{!storeConv.streaming && <Greetings />}
 
 				<Composer
-					className={cx(storeConv.streaming && "h-full")}
+					className={cx(storeConv.streaming && "h-44")}
 					conversation={true}
-					onSend={(text) => void sendMessage({ text })}
+					onSend={(text) => sendMessage({ text })}
 				/>
 			</motion.div>
 		</Box>

@@ -110,10 +110,11 @@ export function Composer({ conversation, onSend, className }: TComposerProps) {
 	return (
 		<Stack
 			gap={0}
+			justify="space-between"
 			align="flex-end"
 			className={cx(
 				"border-2 rounded-2xl border-gray-100 bg-gray-100 py-4 px-3",
-				conversation ? "w-160" : "w-full",
+				conversation ? "w-172" : "w-full",
 				className,
 			)}
 		>
@@ -125,7 +126,8 @@ export function Composer({ conversation, onSend, className }: TComposerProps) {
 				<ComposerSend
 					onClick={() => {
 						onSend(message);
-						storeConv.setStreaming(!storeConv.streaming);
+						setMessage("");
+						storeConv.setStreaming(true);
 					}}
 				/>
 			</Group>
