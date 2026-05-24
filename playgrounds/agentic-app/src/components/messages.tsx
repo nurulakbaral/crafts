@@ -1,5 +1,6 @@
 import { Box } from "@mantine/core";
 import type { UIMessage } from "ai";
+import { Streamdown } from "streamdown";
 
 export type TMessages = {
 	messages: Array<UIMessage>;
@@ -12,7 +13,7 @@ export function Messages({ messages }: TMessages) {
 				<div key={message.id}>
 					{message.role === "user" ? "User: " : "AI: "}
 					{message.parts.map((part, index) =>
-						part.type === "text" ? <span key={`${message.id}-${Number(index)}`}>{part.text}</span> : null,
+						part.type === "text" ? <Streamdown key={message.id + Number(index)}>{part.text}</Streamdown> : null,
 					)}
 				</div>
 			))}

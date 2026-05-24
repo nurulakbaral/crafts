@@ -16,6 +16,7 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "@mantine/core/styles.layer.css";
+@source "../../../../node_modules/streamdown/dist/*.js";
 
 @theme {
 	--font-plus-jakarta-sans: var(--font-plus-jakarta-sans);
