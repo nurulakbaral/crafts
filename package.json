@@ -4,7 +4,8 @@
 	"description": "A place for crafting ideas and documenting the results.",
 	"scripts": {
 		"run:local:rfp": "pnpm run --filter @playgrounds/react-feature-pattern run:local:app",
-		"run:local:agui": "pnpm run --filter @playgrounds/agentic-ui run:local:app",
+		"run:local:agapp": "pnpm run --filter @playgrounds/agentic-app run:local:app",
+		"run:local:agapi": "pnpm run --filter @playgrounds/agentic-api run:local:app",
 		"prepare": "husky"
 	},
 	"keywords": [
@@ -17,22 +18,41 @@
 	"packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
 	"devDependencies": {
 		"@biomejs/biome": "2.4.15",
+		"@dotenvx/dotenvx": "^1.67.0",
 		"@tailwindcss/vite": "^4.3.0",
 		"@tanstack/react-query-devtools": "^5.100.13",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
+		"@types/node": "^24.12.3",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^6.0.1",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.0.5",
 		"postcss": "^8.5.15",
 		"postcss-preset-mantine": "^1.18.0",
 		"postcss-simple-vars": "^7.0.1",
-		"tailwindcss": "^4.3.0"
+		"tailwindcss": "^4.3.0",
+		"tsx": "^4.22.3",
+		"typescript": "^6.0.2",
+		"vite": "^8.0.12",
+		"globals": "^17.6.0"
 	},
 	"dependencies": {
+		"@ai-sdk/mistral": "^3.0.37",
+		"@ai-sdk/openai": "^3.0.65",
 		"@mantine/core": "^9.2.1",
 		"@mantine/hooks": "^9.2.1",
+		"@openrouter/ai-sdk-provider": "^2.9.0",
 		"@tanstack/react-query": "^5.100.13",
+		"ai": "^6.0.191",
 		"axios": "^1.16.1",
 		"clsx": "^2.1.1",
+		"cors": "^2.8.6",
+		"express": "^5.2.1",
 		"immer": "^11.1.8",
+		"react": "^19.2.6",
+		"react-dom": "^19.2.6",
 		"react-router": "^7.15.1",
 		"tailwind-merge": "^3.6.0",
 		"zustand": "^5.0.13"

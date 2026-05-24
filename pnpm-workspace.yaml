@@ -1,3 +1,4 @@
 packages:
-  - "playgrounds/agentic-ui"
+  - "playgrounds/agentic-app"
+  - "playgrounds/agentic-api"
   - "playgrounds/react-feature-pattern"
