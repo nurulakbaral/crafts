@@ -1,0 +1,16 @@
+{
+	"name": "@examples/react-app",
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"run:local:app": "vite",
+		"build:prod:app": "tsc -b && vite build",
+		"preview:prod:app": "vite preview"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.29.0",
+		"@rolldown/plugin-babel": "^0.2.3",
+		"@types/babel__core": "^7.20.5",
+		"babel-plugin-react-compiler": "^1.0.0"
+	}
+}

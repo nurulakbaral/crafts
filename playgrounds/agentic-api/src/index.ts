@@ -1,5 +1,5 @@
 import { mistral } from "@ai-sdk/mistral";
-import { streamText } from "ai";
+import { convertToModelMessages, streamText, type UIMessage } from "ai";
 import cors from "cors";
 import express, { type NextFunction, type Request, type Response } from "express";
 
@@ -17,16 +17,18 @@ app.get("/", (_: Request, res: Response) => {
 
 app.post("/chat", async (req: Request, res: Response) => {
 	try {
-		const messages = req.body as Array<{ role: string; content: string }>;
+		const reqBody = req.body as { messages: Array<UIMessage> };
 
-		if (!messages || messages.length === 0) {
+		if (!reqBody || reqBody.messages.length === 0) {
 			return res.status(400).json({ message: "No messages provided" });
 		}
+
+		const modelMessage = await convertToModelMessages(reqBody.messages);
 
 		const result = streamText({
 			model: mistral("mistral-medium-latest"),
 			system: "You are a helpful assistant.",
-			prompt: messages[0]?.content || "",
+			messages: modelMessage,
 		});
 
 		return result.pipeUIMessageStreamToResponse(res);
