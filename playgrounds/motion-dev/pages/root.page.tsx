@@ -6,11 +6,9 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import App from "./index.page";
 
 createRoot(document.getElementById("root")!).render(
-	<StrictMode>
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<App />} />
-			</Routes>
-		</BrowserRouter>
-	</StrictMode>,
+	<BrowserRouter>
+		<Routes>
+			<Route path="/" element={<App />} />
+		</Routes>
+	</BrowserRouter>,
 );
