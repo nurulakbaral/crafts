@@ -6,6 +6,7 @@
 		"run:local:rfp": "pnpm run --filter @playgrounds/react-feature-pattern run:local:app",
 		"run:local:agapp": "pnpm run --filter @playgrounds/agentic-app run:local:app",
 		"run:local:agapi": "pnpm run --filter @playgrounds/agentic-api run:local:app",
+		"run:local:modev": "pnpm run --filter @playgrounds/motion-dev run:local:app",
 		"run:local:rapp": "pnpm run --filter @examples/react-app run:local:app",
 		"prepare": "husky"
 	},

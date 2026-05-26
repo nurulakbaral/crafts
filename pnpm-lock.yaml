@@ -168,6 +168,21 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
 
+  playgrounds/motion-dev:
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.29.0
+        version: 7.29.0
+      '@rolldown/plugin-babel':
+        specifier: ^0.2.3
+        version: 0.2.3(@babel/core@7.29.0)(rolldown@1.0.2)(vite@8.0.14(@types/node@24.12.4)(esbuild@0.28.0)(jiti@2.7.0)(sugarss@5.0.1(postcss@8.5.15))(tsx@4.22.3)(yaml@2.9.0))
+      '@types/babel__core':
+        specifier: ^7.20.5
+        version: 7.20.5
+      babel-plugin-react-compiler:
+        specifier: ^1.0.0
+        version: 1.0.0
+
   playgrounds/react-feature-pattern:
     devDependencies:
       '@babel/core':

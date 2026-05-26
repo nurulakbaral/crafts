@@ -2,4 +2,5 @@ packages:
   - "playgrounds/agentic-app"
   - "playgrounds/agentic-api"
   - "playgrounds/react-feature-pattern"
+  - "playgrounds/motion-dev"
   - "examples/react-app"
