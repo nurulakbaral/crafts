@@ -1,1 +1,0 @@
-# Go Resumable Uploads
