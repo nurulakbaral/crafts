@@ -4,3 +4,4 @@ packages:
   - "playgrounds/react-feature-pattern"
   - "playgrounds/motion-dev"
   - "examples/react-app"
+  - "examples/express-api"
