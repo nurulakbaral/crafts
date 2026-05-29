@@ -8,6 +8,7 @@
 		"run:local:agapi": "pnpm run --filter @playgrounds/agentic-api run:local:app",
 		"run:local:agcli": "pnpm run --filter @playgrounds/agent-cli run:local:app",
 		"run:local:modev": "pnpm run --filter @playgrounds/motion-dev run:local:app",
+		"run:local:vibe": "pnpm run --filter @playgrounds/vibe-coding-ui run:local:app",
 		"run:local:rapp": "pnpm run --filter @examples/react-app run:local:app",
 		"run:local:exapi": "pnpm run --filter @examples/express-api run:local:app",
 		"test:local:nodejs": "pnpm run --filter @examples/nodejs test:local:app",

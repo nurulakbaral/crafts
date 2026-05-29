@@ -4,6 +4,7 @@ packages:
   - "playgrounds/agent-cli"
   - "playgrounds/react-feature-pattern"
   - "playgrounds/motion-dev"
+  - "playgrounds/vibe-coding-ui"
   - "examples/react-app"
   - "examples/express-api"
   - "examples/nodejs"
