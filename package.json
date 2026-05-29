@@ -6,10 +6,10 @@
 		"run:local:rfp": "pnpm run --filter @playgrounds/react-feature-pattern run:local:app",
 		"run:local:agapp": "pnpm run --filter @playgrounds/agentic-app run:local:app",
 		"run:local:agapi": "pnpm run --filter @playgrounds/agentic-api run:local:app",
+		"run:local:agcli": "pnpm run --filter @playgrounds/agent-cli run:local:app",
 		"run:local:modev": "pnpm run --filter @playgrounds/motion-dev run:local:app",
 		"run:local:rapp": "pnpm run --filter @examples/react-app run:local:app",
 		"run:local:exapi": "pnpm run --filter @examples/express-api run:local:app",
-		"run:local:nodejs": "pnpm run --filter @examples/nodejs run:local:app",
 		"test:local:nodejs": "pnpm run --filter @examples/nodejs test:local:app",
 		"prepare": "husky"
 	},
@@ -65,6 +65,7 @@
 		"react-router": "^7.15.1",
 		"streamdown": "^2.5.0",
 		"tailwind-merge": "^3.6.0",
+		"zod": "^4.4.3",
 		"zustand": "^5.0.13"
 	}
 }
