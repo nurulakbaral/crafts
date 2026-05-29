@@ -1,0 +1,10 @@
+{
+	"name": "@examples/nodejs",
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"run:local:app": "dotenvx run -f ./.env.local -- tsx watch src/index.ts",
+		"test:local:app": "dotenvx run -f ./.env.local -- tsx --test src/index.ts"
+	},
+	"packageManager": "pnpm@10.33.0"
+}

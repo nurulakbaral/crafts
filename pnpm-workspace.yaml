@@ -5,3 +5,4 @@ packages:
   - "playgrounds/motion-dev"
   - "examples/react-app"
   - "examples/express-api"
+  - "examples/nodejs"

@@ -9,6 +9,8 @@
 		"run:local:modev": "pnpm run --filter @playgrounds/motion-dev run:local:app",
 		"run:local:rapp": "pnpm run --filter @examples/react-app run:local:app",
 		"run:local:exapi": "pnpm run --filter @examples/express-api run:local:app",
+		"run:local:nodejs": "pnpm run --filter @examples/nodejs run:local:app",
+		"test:local:nodejs": "pnpm run --filter @examples/nodejs test:local:app",
 		"prepare": "husky"
 	},
 	"keywords": [
