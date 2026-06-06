@@ -1,51 +1,39 @@
-use gpui::{
-    App, Application, Bounds, Context, SharedString, Window, WindowBounds, WindowOptions, div,
-    prelude::*, px, rgb, size,
-};
+use gpui::*;
+use gpui_component::{button::*, *};
 
-struct HelloWorld {
-    text: SharedString,
-}
+pub struct HelloWorld;
 
 impl Render for HelloWorld {
-    fn render(&mut self, _window: &mut Window, _cx: &mut Context<Self>) -> impl IntoElement {
+    fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
         div()
-            .flex()
-            .flex_col()
+            .v_flex()
+            .gap_2()
             .size_full()
-            .bg(gpui::white())
-            .justify_center()
             .items_center()
+            .justify_center()
+            .child("Hello, World!")
             .child(
-                div()
-                    .size(px(250.0))
-                    .bg(rgb(0x505050))
-                    .flex()
-                    .flex_col()
-                    .items_center()
-                    .text_color(gpui::white())
-                    .justify_center()
-                    .rounded_2xl()
-                    .child(format!("Hello, {}", self.text)),
+                Button::new("ok")
+                    .primary()
+                    .label("Let's Go!")
+                    .on_click(|_, _, _| println!("Clicked!")),
             )
     }
 }
 
 fn main() {
-    Application::new().run(|cx: &mut App| {
-        let bounds = Bounds::centered(None, size(px(500.), px(500.0)), cx);
+    let app = gpui_platform::application().with_assets(gpui_component_assets::Assets);
 
-        cx.open_window(
-            WindowOptions {
-                window_bounds: Some(WindowBounds::Windowed(bounds)),
-                ..Default::default()
-            },
-            |_, cx| {
-                cx.new(|_| HelloWorld {
-                    text: "World".into(),
-                })
-            },
-        )
-        .unwrap();
+    app.run(move |cx| {
+        gpui_component::init(cx);
+
+        cx.spawn(async move |cx| {
+            cx.open_window(WindowOptions::default(), |window, cx| {
+                let view = cx.new(|_| HelloWorld);
+                cx.new(|cx| Root::new(view, window, cx))
+            })
+            .expect("Failed to open window");
+        })
+        .detach();
     });
 }
