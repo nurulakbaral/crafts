@@ -1,3 +1,7 @@
 go 1.26.1
 
-use ./playgrounds/go-resumable-uploads
+use (
+	./playgrounds/go-resumable-uploads
+	./syntax/goroutines
+	./judges/two-sum
+)
