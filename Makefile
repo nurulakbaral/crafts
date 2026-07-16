@@ -3,4 +3,4 @@ api-axum-authentication:
 api-gpui-crud:
 	cargo run --package gpui_crud
 api-go:
-	go run ./playgrounds/go-resumable-uploads/main.go
+	go run ./_playgrounds/go-resumable-uploads/main.go
