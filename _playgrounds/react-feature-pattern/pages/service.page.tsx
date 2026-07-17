@@ -1,4 +1,4 @@
-export function IndexPage() {
+export function ServicePage() {
 	return (
 		<div>
 			<p>Hello World!</p>
