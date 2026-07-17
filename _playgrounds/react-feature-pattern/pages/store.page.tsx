@@ -1,4 +1,4 @@
-import { counterStore } from "~/features/account/stores/counter.store";
+import { counterStore } from "~/features/account/stores";
 
 function CardCounter() {
 	const counterStates = counterStore.useStates();
@@ -10,9 +10,11 @@ function CardCounter() {
 	);
 }
 
-export function StatePage() {
+export function StorePage() {
 	return (
-		<div className="mx-20 mt-20 p-12">
+		<div className="p-12 border border-blue-700 m-10">
+			<p className="text-center mb-10">Store Page</p>
+
 			<button
 				className="p-4 bg-gray-100 rounded-lg mb-1"
 				type="button"

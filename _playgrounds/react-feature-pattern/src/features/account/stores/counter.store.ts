@@ -2,16 +2,18 @@ import { useStore } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { createStore, type Mutate, type StoreApi } from "zustand/vanilla";
 
-interface TCounterState {
-	count: number;
+namespace TCounterStore {
+	export type States = {
+		count: number;
+	};
 }
 
-class CounterStore {
-	private readonly api: Mutate<StoreApi<TCounterState>, [["zustand/immer", never]]>;
-	static readonly initialState: TCounterState = { count: 0 };
+export class CounterStore {
+	private readonly api: Mutate<StoreApi<TCounterStore.States>, [["zustand/immer", never]]>;
+	static readonly initialState: TCounterStore.States = { count: 0 };
 
 	constructor() {
-		this.api = createStore<TCounterState>()(immer(() => CounterStore.initialState));
+		this.api = createStore<TCounterStore.States>()(immer(() => CounterStore.initialState));
 	}
 
 	useStates() {
@@ -34,5 +36,3 @@ class CounterStore {
 		this.api.setState(CounterStore.initialState);
 	}
 }
-
-export const counterStore = new CounterStore();
