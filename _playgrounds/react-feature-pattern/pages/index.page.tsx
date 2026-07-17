@@ -1,38 +1,16 @@
-import { counterStore } from "~/features/account/stores/counter.store";
+import { ServicePage } from "./service.page";
+import { StorePage } from "./store.page";
 
-function CardCounter() {
-	const counterStates = counterStore.useStates();
-
+export function IndexPage() {
 	return (
-		<div>
-			<p>{counterStates.count}</p>
-		</div>
-	);
-}
+		<section className="flex flex-col min-h-screen">
+			<div className="border flex-1 m-10 p-10">
+				<p className="text-center">Page Container</p>
 
-export default function App() {
-	return (
-		<div className="mx-20 mt-20 p-12">
-			<button
-				className="p-4 bg-gray-100 rounded-lg mb-1"
-				type="button"
-				onClick={() => {
-					counterStore.increment();
-				}}
-			>
-				Count
-			</button>
+				<ServicePage />
 
-			<button
-				className="p-4 bg-gray-100 rounded-lg mb-1"
-				type="button"
-				onClick={() => {
-					counterStore.reset();
-				}}
-			>
-				Reset
-			</button>
-			<CardCounter />
-		</div>
+				<StorePage />
+			</div>
+		</section>
 	);
 }
