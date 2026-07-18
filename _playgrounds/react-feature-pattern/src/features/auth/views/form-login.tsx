@@ -28,7 +28,7 @@ export function FormLogin({ ...props }: TFormLoginProps) {
 			className="flex flex-col px-6 py-8 sm:px-10 sm:py-10 md:px-16 lg:px-[clamp(3rem,5vw,6.5rem)] lg:py-10 xl:py-12"
 			{...props}
 		>
-			<Group gap="sm" className="shrink-0">
+			<Group gap="xs" className="shrink-0">
 				<Image src="/icon.png" alt="Sellora logo" className="size-10 object-contain mix-blend-multiply" />
 				<Text className="text-[22px] font-bold tracking-[-0.03em] text-[#17171c]">Sellora</Text>
 			</Group>
@@ -68,20 +68,6 @@ export function FormLogin({ ...props }: TFormLoginProps) {
 								visibilityToggle: "mr-1 text-[#a1a1aa]",
 							}}
 						/>
-
-						<Group justify="space-between" gap="sm" className="mt-4">
-							<Checkbox
-								label="Remember Me"
-								size="sm"
-								classNames={{
-									input: "cursor-pointer border-[#b7b7be]",
-									label: "cursor-pointer pl-2 text-[13px] text-[#85858e]",
-								}}
-							/>
-							<Anchor href="#" underline="never" className="text-[13px] font-medium text-[#3e38e8]">
-								Forgot Your Password?
-							</Anchor>
-						</Group>
 
 						<Button
 							type="button"
