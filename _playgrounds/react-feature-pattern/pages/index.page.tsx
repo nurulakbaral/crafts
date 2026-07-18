@@ -1,16 +1,14 @@
-import { ServicePage } from "./service.page";
-import { StorePage } from "./store.page";
+import { Box, Button, Text } from "@mantine/core";
+import { Link } from "react-router";
 
 export function IndexPage() {
 	return (
-		<section className="flex flex-col min-h-screen">
-			<div className="border flex-1 m-10 p-10">
-				<p className="text-center">Page Container</p>
+		<Box className="mt-10">
+			<Text className="text-2xl text-center">Hello, World!</Text>
 
-				<ServicePage />
-
-				<StorePage />
-			</div>
-		</section>
+			<Link className="inline-flex justify-center w-full mt-12" to="/login">
+				<Button size="lg">Login</Button>
+			</Link>
+		</Box>
 	);
 }
