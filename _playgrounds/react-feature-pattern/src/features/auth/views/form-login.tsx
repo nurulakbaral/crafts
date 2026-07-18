@@ -9,25 +9,23 @@ import {
 	Group,
 	Image,
 	PasswordInput,
-	SimpleGrid,
 	Text,
 	TextInput,
 	Title,
 } from "@mantine/core";
-import { AppleLogo, GoogleLogo } from "@phosphor-icons/react";
 import type * as React from "react";
-
-type TFormLoginProps = React.PropsWithChildren<ElementProps<"section", keyof BoxProps> & BoxProps>;
 
 // ==========================================================================================
 // @Main — Form Login
 // ==========================================================================================
 
+type TFormLoginProps = React.PropsWithChildren<ElementProps<"section", keyof BoxProps> & BoxProps>;
+
 export function FormLogin({ ...props }: TFormLoginProps) {
 	return (
 		<Box
 			component="section"
-			className="flex min-h-dvh flex-col px-6 py-8 sm:min-h-[calc(100dvh-4rem)] sm:px-10 sm:py-10 md:px-16 lg:min-h-full lg:px-[clamp(3rem,5vw,6.5rem)] lg:py-10 xl:py-12"
+			className="flex flex-col px-6 py-8 sm:px-10 sm:py-10 md:px-16 lg:px-[clamp(3rem,5vw,6.5rem)] lg:py-10 xl:py-12"
 			{...props}
 		>
 			<Group gap="sm" className="shrink-0">
@@ -35,7 +33,7 @@ export function FormLogin({ ...props }: TFormLoginProps) {
 				<Text className="text-[22px] font-bold tracking-[-0.03em] text-[#17171c]">Sellora</Text>
 			</Group>
 
-			<Box className="mx-auto flex w-full max-w-[520px] flex-1 items-center py-12 lg:py-10">
+			<Box className="mx-auto flex w-full max-w-130 flex-1 items-center py-12 lg:py-10">
 				<Box className="w-full">
 					<Title
 						order={1}
@@ -43,7 +41,7 @@ export function FormLogin({ ...props }: TFormLoginProps) {
 					>
 						Welcome Back
 					</Title>
-					<Text className="mx-auto mt-4 max-w-[430px] text-center text-[14px] leading-6 text-[#8b8b94] sm:text-[15px]">
+					<Text className="mx-auto mt-4 max-w-107.5 text-center text-[14px] leading-6 text-[#8b8b94] sm:text-[15px]">
 						Enter your email and password to access your account.
 					</Text>
 
@@ -98,25 +96,6 @@ export function FormLogin({ ...props }: TFormLoginProps) {
 							labelPosition="center"
 							className="my-7 border-[#e8e8ec] text-[13px] text-[#898992]"
 						/>
-
-						<SimpleGrid cols={2} spacing="sm">
-							<Button
-								type="button"
-								variant="default"
-								leftSection={<GoogleLogo size={20} weight="bold" />}
-								className="h-12 rounded-lg border-[#e4e4e8] bg-white text-[14px] font-medium text-[#4f4f57] shadow-none"
-							>
-								Google
-							</Button>
-							<Button
-								type="button"
-								variant="default"
-								leftSection={<AppleLogo size={20} weight="fill" />}
-								className="h-12 rounded-lg border-[#e4e4e8] bg-white text-[14px] font-medium text-[#4f4f57] shadow-none"
-							>
-								Apple
-							</Button>
-						</SimpleGrid>
 					</Box>
 
 					<Text className="mt-7 text-center text-[13px] text-[#8b8b94]">
@@ -127,13 +106,6 @@ export function FormLogin({ ...props }: TFormLoginProps) {
 					</Text>
 				</Box>
 			</Box>
-
-			<Group justify="space-between" gap="sm" className="shrink-0 text-[#a1a1a8] max-sm:flex-col max-sm:items-start">
-				<Text className="text-[12px] sm:text-[13px]">Copyright © 2025 Sellora Enterprises LTD.</Text>
-				<Anchor href="#" underline="never" className="text-[12px] text-[#a1a1a8] sm:text-[13px]">
-					Privacy Policy
-				</Anchor>
-			</Group>
 		</Box>
 	);
 }
