@@ -1,2 +1,2 @@
 export * from "./banner-login";
-export * from "./login-form";
+export * from "./form-login";
