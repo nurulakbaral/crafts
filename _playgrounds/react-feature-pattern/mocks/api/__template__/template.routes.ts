@@ -1,7 +1,7 @@
+import { templateCollection } from "@mocks/api/__template__/template.collection";
+import type { TTypesTemplate } from "@mocks/api/__template__/template.types";
+import { createUrl } from "@mocks/msw.utils";
 import { HttpResponse, http } from "msw";
-import { templateCollection } from "~/mocks/api/__template__/template.collection";
-import type { TTypesTemplate } from "~/mocks/api/__template__/template.types";
-import { createUrl } from "~/mocks/msw.utils";
 
 const templateRoute = http.get<{ id: string }>(createUrl("client")("/mock/template/:id"), ({ params }) => {
 	const _templateId = params.id;

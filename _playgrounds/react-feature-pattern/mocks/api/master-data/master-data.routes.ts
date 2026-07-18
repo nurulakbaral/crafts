@@ -1,6 +1,6 @@
+import { masterDataCollection } from "@mocks/api/master-data/master-data.collection";
+import { createUrl } from "@mocks/msw.utils";
 import { HttpResponse, http } from "msw";
-import { masterDataCollection } from "~/mocks/api/master-data/master-data.collection";
-import { createUrl } from "~/mocks/msw.utils";
 import type { TTypesMasterData } from "./master-data.types";
 
 const gradeRoute = http.get(createUrl("client")("/mock/master-data/grade"), () => {

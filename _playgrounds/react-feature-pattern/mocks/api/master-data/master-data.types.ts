@@ -1,4 +1,4 @@
-import type { TTypesMsw } from "~/mocks/msw.types";
+import type { TTypesMsw } from "@mocks/msw.types";
 import type { masterDataCollection } from "./master-data.collection";
 
 export namespace TTypesMasterData {

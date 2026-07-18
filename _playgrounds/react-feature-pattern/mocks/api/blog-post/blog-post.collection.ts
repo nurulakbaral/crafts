@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
+import { userManagementCollection } from "@mocks/api/user-management/user-management.collection";
+import { masterData } from "@mocks/fixtures";
 import { Collection } from "@msw/data";
 import * as z from "zod";
-import { userManagementCollection } from "~/mocks/api/user-management/user-management.collection";
-import { masterData } from "~/mocks/fixtures";
 
 const categories = new Collection({
 	schema: z.object({

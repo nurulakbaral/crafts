@@ -1,6 +1,6 @@
+import { masterData } from "@mocks/fixtures";
 import { Collection } from "@msw/data";
 import * as z from "zod";
-import { masterData } from "~/mocks/fixtures";
 
 const status = new Collection({
 	schema: z.object({

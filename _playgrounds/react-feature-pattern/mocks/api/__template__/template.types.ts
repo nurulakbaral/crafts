@@ -1,4 +1,4 @@
-import type { TTypesMsw } from "~/mocks/msw.types";
+import type { TTypesMsw } from "@mocks/msw.types";
 import type { templateCollection } from "./template.collection";
 
 export namespace TTypesTemplate {

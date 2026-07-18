@@ -1,8 +1,8 @@
+import { userManagementCollection } from "@mocks/api/user-management/user-management.collection";
+import { createUrl } from "@mocks/msw.utils";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import { delay, HttpResponse, http } from "msw";
-import { userManagementCollection } from "~/mocks/api/user-management/user-management.collection";
-import { createUrl } from "~/mocks/msw.utils";
 import { utilsApi } from "../api.utils";
 import { masterDataCollection } from "../master-data/master-data.collection";
 import type { TTypesUserManagement } from "./user-management.types";

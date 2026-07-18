@@ -1,8 +1,8 @@
+import { utilsApi } from "@mocks/api/api.utils";
+import { blogPostCollection } from "@mocks/api/blog-post/blog-post.collection";
+import type { TTypesBlogPost } from "@mocks/api/blog-post/blog-post.types";
+import { createUrl } from "@mocks/msw.utils";
 import { HttpResponse, http } from "msw";
-import { utilsApi } from "~/mocks/api/api.utils";
-import { blogPostCollection } from "~/mocks/api/blog-post/blog-post.collection";
-import type { TTypesBlogPost } from "~/mocks/api/blog-post/blog-post.types";
-import { createUrl } from "~/mocks/msw.utils";
 
 const categoriesRoute = http.get(createUrl("client")("/mock/blog-post/categories"), async () => {
 	return HttpResponse.json<TTypesBlogPost.ResponseCategories>({
