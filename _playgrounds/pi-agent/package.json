@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"run:local:app": "dotenvx run -f ./.env.local -- tsx watch src/index.ts",
+		"run:local:app": "dotenvx run -f ./.env.local -- tsx src/index.ts",
+		"run:local:code": "dotenvx run -f ./.env.local -- tsx src/ModelCredentials.ts",
 		"test:local:app": "dotenvx run -f ./.env.local -- tsx --test src/index.ts"
 	}
 }
