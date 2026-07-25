@@ -8,3 +8,6 @@ packages:
   - "examples/react-app"
   - "examples/express-api"
   - "examples/nodejs"
+allowBuilds:
+  esbuild: true
+  msw: true
