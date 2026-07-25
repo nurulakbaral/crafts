@@ -10,5 +10,7 @@ packages:
   - "examples/express-api"
   - "examples/nodejs"
 allowBuilds:
+  '@google/genai': true
   esbuild: true
   msw: true
+  protobufjs: true

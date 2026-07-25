@@ -10,7 +10,6 @@
     "run:local:modev": "pnpm run --filter @playground/motion-dev run:local:app",
     "run:local:vibe": "pnpm run --filter @playground/vibe-coding-ui run:local:app",
     "run:local:pi": "pnpm run --filter @playground/pi-agent run:local:app",
-
     "run:local:rapp": "pnpm run --filter @example/react-app run:local:app",
     "run:local:exapi": "pnpm run --filter @example/express-api run:local:app",
     "test:local:nodejs": "pnpm run --filter @example/nodejs test:local:app",
@@ -53,6 +52,8 @@
     "@ai-sdk/mistral": "^3.0.37",
     "@ai-sdk/openai": "^3.0.65",
     "@ai-sdk/react": "^3.0.193",
+    "@earendil-works/pi-agent-core": "^0.82.0",
+    "@earendil-works/pi-ai": "^0.82.0",
     "@mantine/core": "^9.2.1",
     "@mantine/hooks": "^9.2.1",
     "@openrouter/ai-sdk-provider": "^2.9.0",
