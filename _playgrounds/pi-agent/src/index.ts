@@ -5,8 +5,8 @@ import { credentials } from "./credential.js";
 
 const models = createModels({ credentials });
 models.setProvider(openaiCodexProvider());
-const model = models.getModel("openai-codex", "gpt-5.6-terra");
 
+const model = models.getModel("openai-codex", "gpt-5.6-terra");
 if (!model) {
 	throw new Error("Model not found, ");
 }
