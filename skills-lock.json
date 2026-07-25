@@ -66,6 +66,12 @@
       "sourceType": "github",
       "skillPath": "skills/modern-web-guidance/SKILL.md",
       "computedHash": "9f4a50b16567d3e146014ca1e36cf31d11a9b28468eebdbbbee06ffe3b08dda8"
+    },
+    "react-feature-pattern": {
+      "source": "nurulakbaral/agents",
+      "sourceType": "github",
+      "skillPath": "skills/react-feature-pattern/SKILL.md",
+      "computedHash": "033f2782a0c3d0e2a4c9af2a341cbe0915e3c159b56de0ebe271ade2113d79d4"
     }
   }
 }
