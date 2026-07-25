@@ -188,6 +188,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
 
+  _playgrounds/pi-agent: {}
+
   _playgrounds/react-feature-pattern:
     devDependencies:
       '@babel/core':

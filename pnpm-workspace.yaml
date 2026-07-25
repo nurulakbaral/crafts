@@ -5,6 +5,7 @@ packages:
   - "_playgrounds/react-feature-pattern"
   - "_playgrounds/motion-dev"
   - "_playgrounds/vibe-coding-ui"
+  - "_playgrounds/pi-agent"
   - "examples/react-app"
   - "examples/express-api"
   - "examples/nodejs"

@@ -1,5 +1,5 @@
 {
-	"name": "@playgrounds/agent-cli",
+	"name": "@playground/agent-cli",
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {

@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "description": "A place for crafting ideas and documenting the results.",
   "scripts": {
-    "run:local:rfp": "pnpm run --filter @playgrounds/react-feature-pattern run:local:app",
-    "run:local:agapp": "pnpm run --filter @playgrounds/agentic-app run:local:app",
-    "run:local:agapi": "pnpm run --filter @playgrounds/agentic-api run:local:app",
-    "run:local:agcli": "pnpm run --filter @playgrounds/agent-cli run:local:app",
-    "run:local:modev": "pnpm run --filter @playgrounds/motion-dev run:local:app",
-    "run:local:vibe": "pnpm run --filter @playgrounds/vibe-coding-ui run:local:app",
-    "run:local:rapp": "pnpm run --filter @examples/react-app run:local:app",
-    "run:local:exapi": "pnpm run --filter @examples/express-api run:local:app",
-    "test:local:nodejs": "pnpm run --filter @examples/nodejs test:local:app",
+    "run:local:rfp": "pnpm run --filter @playground/react-feature-pattern run:local:app",
+    "run:local:agapp": "pnpm run --filter @playground/agentic-app run:local:app",
+    "run:local:agapi": "pnpm run --filter @playground/agentic-api run:local:app",
+    "run:local:agcli": "pnpm run --filter @playground/agent-cli run:local:app",
+    "run:local:modev": "pnpm run --filter @playground/motion-dev run:local:app",
+    "run:local:vibe": "pnpm run --filter @playground/vibe-coding-ui run:local:app",
+    "run:local:pi": "pnpm run --filter @playground/pi-agent run:local:app",
+
+    "run:local:rapp": "pnpm run --filter @example/react-app run:local:app",
+    "run:local:exapi": "pnpm run --filter @example/express-api run:local:app",
+    "test:local:nodejs": "pnpm run --filter @example/nodejs test:local:app",
     "prepare": "husky"
   },
   "keywords": [
