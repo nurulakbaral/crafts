@@ -6,11 +6,12 @@ packages:
   - "_playgrounds/motion-dev"
   - "_playgrounds/vibe-coding-ui"
   - "_playgrounds/pi-agent"
+  - "_playgrounds/vgpu"
   - "examples/react-app"
   - "examples/express-api"
   - "examples/nodejs"
 allowBuilds:
-  '@google/genai': true
+  "@google/genai": true
   esbuild: true
   msw: true
   protobufjs: true

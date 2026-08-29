@@ -11,6 +11,7 @@
     "run:local:vibe": "pnpm run --filter @playground/vibe-coding-ui run:local:app",
     "run:local:pi": "pnpm run --filter @playground/pi-agent run:local:app",
     "run:local:pi-code": "pnpm run --filter @playground/pi-agent run:local:code",
+    "run:local:vgpu": "pnpm run --filter @playground/vgpu run:local:app",
     "run:local:rapp": "pnpm run --filter @example/react-app run:local:app",
     "run:local:exapi": "pnpm run --filter @example/express-api run:local:app",
     "test:local:nodejs": "pnpm run --filter @example/nodejs test:local:app",
