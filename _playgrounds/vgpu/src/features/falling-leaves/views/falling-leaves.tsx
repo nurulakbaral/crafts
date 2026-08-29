@@ -8,6 +8,7 @@ import { FallingLeavesSettings } from "./falling-leaves-settings";
 const DEFAULT_GLASS_AMOUNT = 55;
 const DEFAULT_LEAF_COUNT = 18;
 const DEFAULT_LEAF_SIZE = 100;
+const DEFAULT_LOGO_SCALE = 55;
 const DEFAULT_NOISE_AMOUNT = 12;
 
 type TFallingLeavesProps = React.ComponentPropsWithoutRef<"main">;
@@ -30,6 +31,7 @@ export function FallingLeaves({ className, ...props }: TFallingLeavesProps) {
 	const [glassAmount, setGlassAmount] = React.useState(DEFAULT_GLASS_AMOUNT);
 	const [leafCount, setLeafCount] = React.useState(DEFAULT_LEAF_COUNT);
 	const [leafSize, setLeafSize] = React.useState(DEFAULT_LEAF_SIZE);
+	const [logoScale, setLogoScale] = React.useState(DEFAULT_LOGO_SCALE);
 	const [noiseAmount, setNoiseAmount] = React.useState(DEFAULT_NOISE_AMOUNT);
 	const [isConfigMinimized, setIsConfigMinimized] = React.useState(false);
 	const [renderError, setRenderError] = React.useState<string | null>(null);
@@ -177,16 +179,24 @@ export function FallingLeaves({ className, ...props }: TFallingLeavesProps) {
 	return (
 		<main {...props} className={`relative min-h-screen overflow-hidden bg-white ${className ?? ""}`}>
 			<canvas ref={canvasRef} aria-label="Animated falling green leaves" className="absolute inset-0 h-full w-full" />
+			<img
+				alt="Makna"
+				className="pointer-events-none absolute left-1/2 top-1/2 z-[1] h-auto max-h-[70vh] max-w-[calc(100vw-2rem)] -translate-x-1/2 -translate-y-1/2 object-contain"
+				src="/favicon.svg"
+				style={{ width: `${logoScale}%` }}
+			/>
 			<FallingLeavesSettings
 				glassAmount={glassAmount}
 				isMinimized={isConfigMinimized}
 				leafCount={leafCount}
 				leafSize={leafSize}
+				logoScale={logoScale}
 				noiseAmount={noiseAmount}
 				error={renderError}
 				onGlassAmountChange={handleGlassAmountChange}
 				onLeafCountChange={handleLeafCountChange}
 				onLeafSizeChange={handleLeafSizeChange}
+				onLogoScaleChange={setLogoScale}
 				onNoiseAmountChange={handleNoiseAmountChange}
 				onToggle={() => setIsConfigMinimized((current) => !current)}
 			/>

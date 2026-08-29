@@ -6,10 +6,12 @@ type TFallingLeavesSettingsProps = {
 	isMinimized: boolean;
 	leafCount: number;
 	leafSize: number;
+	logoScale: number;
 	noiseAmount: number;
 	onGlassAmountChange: (value: number) => void;
 	onLeafCountChange: (value: number) => void;
 	onLeafSizeChange: (value: number) => void;
+	onLogoScaleChange: (value: number) => void;
 	onNoiseAmountChange: (value: number) => void;
 	onToggle: () => void;
 } & Omit<React.ComponentPropsWithoutRef<"aside">, "children">;
@@ -55,10 +57,12 @@ export function FallingLeavesSettings({
 	isMinimized,
 	leafCount,
 	leafSize,
+	logoScale,
 	noiseAmount,
 	onGlassAmountChange,
 	onLeafCountChange,
 	onLeafSizeChange,
+	onLogoScaleChange,
 	onNoiseAmountChange,
 	onToggle,
 	className,
@@ -138,6 +142,16 @@ export function FallingLeavesSettings({
 					unit="%"
 					value={leafSize}
 					onChange={onLeafSizeChange}
+				/>
+				<RangeSetting
+					id="logo-scale"
+					label="Logo scale"
+					min={0}
+					max={100}
+					step={1}
+					unit="%"
+					value={logoScale}
+					onChange={onLogoScaleChange}
 				/>
 			</section>
 
