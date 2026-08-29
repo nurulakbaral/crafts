@@ -12,6 +12,8 @@ packages:
   - "examples/nodejs"
 allowBuilds:
   "@google/genai": true
+  '@vgpu/adapter-node': true
   esbuild: true
   msw: true
   protobufjs: true
+  webgpu: true
