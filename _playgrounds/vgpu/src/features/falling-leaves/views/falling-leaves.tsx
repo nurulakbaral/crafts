@@ -1,5 +1,5 @@
 import * as React from "react";
-import { clock, effect, frameLoop, init, surface } from "vgpu";
+import { clock, draw, frameLoop, init, surface } from "vgpu";
 
 import fallingLeavesShader from "../shaders/falling-leaves.wgsl";
 
@@ -135,7 +135,7 @@ function LeafSettings({
 
 export function FallingLeaves({ className, ...props }: TFallingLeavesProps) {
 	const canvasRef = React.useRef<HTMLCanvasElement>(null);
-	const leavesRef = React.useRef<ReturnType<typeof effect> | null>(null);
+	const leavesRef = React.useRef<ReturnType<typeof draw> | null>(null);
 	const settingsRef = React.useRef({ leafCount: DEFAULT_LEAF_COUNT, sizeScale: DEFAULT_LEAF_SIZE / 100 });
 	const [leafCount, setLeafCount] = React.useState(DEFAULT_LEAF_COUNT);
 	const [leafSize, setLeafSize] = React.useState(DEFAULT_LEAF_SIZE);
@@ -145,7 +145,6 @@ export function FallingLeaves({ className, ...props }: TFallingLeavesProps) {
 	function handleLeafCountChange(value: number) {
 		settingsRef.current.leafCount = value;
 		setLeafCount(value);
-		leavesRef.current?.set({ params: { leafCount: value } });
 	}
 
 	function handleLeafSizeChange(value: number) {
@@ -159,7 +158,7 @@ export function FallingLeaves({ className, ...props }: TFallingLeavesProps) {
 		let cancelled = false;
 		let stopLoop: (() => void) | undefined;
 		let unsubscribeResize: (() => void) | undefined;
-		let leavesEffect: ReturnType<typeof effect> | undefined;
+		let leavesDraw: ReturnType<typeof draw> | undefined;
 		let gpu: Awaited<ReturnType<typeof init>> | undefined;
 
 		async function start() {
@@ -174,35 +173,36 @@ export function FallingLeaves({ className, ...props }: TFallingLeavesProps) {
 				}
 
 				gpu = nextGpu;
-				const target = surface(gpu, canvas, { dpr: [1, 2] });
-				const leaves = effect(gpu, fallingLeavesShader, {
+				const canvasSurface = surface(gpu, canvas, { dpr: [1, 2] });
+				const leaves = draw(gpu, {
+					shader: fallingLeavesShader,
+					vertices: 6,
+					blend: "alpha",
 					set: {
 						params: {
 							time: 0,
 							aspect: 1,
 							wind: 1,
 							sizeScale: settingsRef.current.sizeScale,
-							leafCount: settingsRef.current.leafCount,
-							padding0: 0,
-							padding1: 0,
-							padding2: 0,
 						},
 					},
 				});
-				leavesEffect = leaves;
+				leavesDraw = leaves;
 				leavesRef.current = leaves;
 
-				unsubscribeResize = target.onResize(({ width, height }) => {
+				unsubscribeResize = canvasSurface.onResize(({ width, height }) => {
 					leaves.set({ params: { aspect: width / Math.max(height, 1) } });
 				});
 
-				await leaves.compile({ colors: [target.format] });
+				await leaves.compile({ colors: [canvasSurface.format] });
 				if (cancelled) return;
 
 				const sceneClock = clock(gpu);
 				const loop = frameLoop(gpu, (frame) => {
 					leaves.set({ params: { time: sceneClock.time } });
-					frame.pass(target, leaves);
+					frame.pass({ target: canvasSurface, clear: [1, 1, 1, 1] }, (pass) =>
+						pass.draw(leaves, { instances: settingsRef.current.leafCount }),
+					);
 				});
 				stopLoop = () => loop.stop();
 			} catch (error) {
@@ -216,7 +216,7 @@ export function FallingLeaves({ className, ...props }: TFallingLeavesProps) {
 			cancelled = true;
 			stopLoop?.();
 			unsubscribeResize?.();
-			if (leavesRef.current === leavesEffect) leavesRef.current = null;
+			if (leavesRef.current === leavesDraw) leavesRef.current = null;
 			gpu?.dispose();
 		};
 	}, []);
