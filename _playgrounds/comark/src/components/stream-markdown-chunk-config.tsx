@@ -7,6 +7,7 @@ type TStreamMarkdownChunkConfigProps = {
 	onAdd: () => void;
 	onClear: () => void;
 	onDraftChange: (value: string) => void;
+	onEdit: (id: string, value: string) => void;
 	onRemove: (id: string) => void;
 } & Omit<React.HTMLProps<HTMLDivElement>, "onChange">;
 
@@ -18,11 +19,20 @@ export function StreamMarkdownChunkConfig({
 	onAdd,
 	onClear,
 	onDraftChange,
+	onEdit,
 	onRemove,
 	...props
 }: TStreamMarkdownChunkConfigProps) {
+	const [editingChunk, setEditingChunk] = React.useState<{ id: string; value: string }>();
 	const hasCustomChunks = chunks.length > 0;
 	const inputId = React.useId();
+
+	function saveEditingChunk() {
+		if (!editingChunk?.value.length) return;
+
+		onEdit(editingChunk.id, editingChunk.value);
+		setEditingChunk(undefined);
+	}
 
 	return (
 		<div className={`border-b border-zinc-200 bg-zinc-50/70 px-5 py-4 sm:px-6 ${className ?? ""}`} {...props}>
@@ -71,7 +81,10 @@ export function StreamMarkdownChunkConfig({
 						<button
 							className="text-[11px] font-medium text-zinc-400 transition hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-40"
 							disabled={disabled || !hasCustomChunks}
-							onClick={onClear}
+							onClick={() => {
+								setEditingChunk(undefined);
+								onClear();
+							}}
 							type="button"
 						>
 							Clear all
@@ -79,7 +92,7 @@ export function StreamMarkdownChunkConfig({
 					</div>
 
 					{hasCustomChunks ? (
-						<ol className="flex max-h-28 flex-col gap-1.5 overflow-auto">
+						<ol className="flex max-h-52 flex-col gap-1.5 overflow-auto">
 							{chunks.map((chunk, index) => (
 								<li
 									className="flex items-start gap-2 rounded-lg border border-zinc-200 bg-white px-2.5 py-2"
@@ -88,18 +101,70 @@ export function StreamMarkdownChunkConfig({
 									<span className="mt-0.5 shrink-0 font-mono text-[10px] font-semibold text-emerald-600">
 										#{index + 1}
 									</span>
-									<pre className="line-clamp-2 min-w-0 flex-1 whitespace-pre-wrap font-mono text-[11px] leading-4 text-zinc-600">
-										{chunk.value}
-									</pre>
-									<button
-										aria-label={`Remove chunk ${index + 1}`}
-										className="grid size-5 shrink-0 place-items-center rounded-full text-sm text-zinc-400 transition hover:bg-red-50 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-40"
-										disabled={disabled}
-										onClick={() => onRemove(chunk.id)}
-										type="button"
-									>
-										×
-									</button>
+									{editingChunk?.id === chunk.id ? (
+										<div className="min-w-0 flex-1">
+											<textarea
+												aria-label={`Edit chunk ${index + 1}`}
+												className="min-h-20 w-full resize-y rounded-lg border border-emerald-300 bg-white px-2.5 py-2 font-mono text-[11px] leading-4 text-zinc-700 outline-none ring-3 ring-emerald-100 disabled:cursor-not-allowed disabled:bg-zinc-100"
+												disabled={disabled}
+												onChange={(event) => setEditingChunk({ id: chunk.id, value: event.currentTarget.value })}
+												onKeyDown={(event) => {
+													if (event.key === "Escape") {
+														setEditingChunk(undefined);
+														return;
+													}
+
+													if (event.key !== "Enter" || (!event.metaKey && !event.ctrlKey)) return;
+
+													event.preventDefault();
+													saveEditingChunk();
+												}}
+												value={editingChunk.value}
+											/>
+											<div className="mt-2 flex justify-end gap-1.5">
+												<button
+													className="rounded-lg px-2.5 py-1 text-[11px] font-medium text-zinc-500 transition hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40"
+													disabled={disabled}
+													onClick={() => setEditingChunk(undefined)}
+													type="button"
+												>
+													Cancel
+												</button>
+												<button
+													className="rounded-lg bg-emerald-600 px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
+													disabled={disabled || editingChunk.value.length === 0}
+													onClick={saveEditingChunk}
+													type="button"
+												>
+													Save
+												</button>
+											</div>
+										</div>
+									) : (
+										<>
+											<pre className="line-clamp-2 min-w-0 flex-1 whitespace-pre-wrap font-mono text-[11px] leading-4 text-zinc-600">
+												{chunk.value}
+											</pre>
+											<button
+												aria-label={`Edit chunk ${index + 1}`}
+												className="shrink-0 rounded-md px-1.5 py-0.5 text-[10px] font-medium text-zinc-400 transition hover:bg-emerald-50 hover:text-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
+												disabled={disabled}
+												onClick={() => setEditingChunk({ id: chunk.id, value: chunk.value })}
+												type="button"
+											>
+												Edit
+											</button>
+											<button
+												aria-label={`Remove chunk ${index + 1}`}
+												className="grid size-5 shrink-0 place-items-center rounded-full text-sm text-zinc-400 transition hover:bg-red-50 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-40"
+												disabled={disabled}
+												onClick={() => onRemove(chunk.id)}
+												type="button"
+											>
+												×
+											</button>
+										</>
+									)}
 								</li>
 							))}
 						</ol>

@@ -71,6 +71,8 @@ function StreamButton({ className, variant = "secondary", ...props }: TStreamBut
 // @Main — Stream Markdown
 // ==========================================================================================
 
+const parse = createMarkdownParser();
+
 type TStreamMarkdownProps = React.HTMLProps<HTMLElement>;
 
 export function StreamMarkdown({ className, ...props }: TStreamMarkdownProps) {
@@ -95,7 +97,6 @@ export function StreamMarkdown({ className, ...props }: TStreamMarkdownProps) {
 		abortController.current?.abort();
 
 		const controller = new AbortController();
-		const parse = createMarkdownParser();
 		abortController.current = controller;
 
 		setDocument(undefined);
@@ -240,6 +241,9 @@ export function StreamMarkdown({ className, ...props }: TStreamMarkdownProps) {
 				onAdd={addChunk}
 				onClear={() => setChunks([])}
 				onDraftChange={setDraftChunk}
+				onEdit={(id, value) =>
+					setChunks((currentChunks) => currentChunks.map((chunk) => (chunk.id === id ? { ...chunk, value } : chunk)))
+				}
 				onRemove={(id) => setChunks((currentChunks) => currentChunks.filter((chunk) => chunk.id !== id))}
 			/>
 
@@ -249,15 +253,15 @@ export function StreamMarkdown({ className, ...props }: TStreamMarkdownProps) {
 				</p>
 			) : null}
 
-			<div className="grid min-h-[34rem] md:grid-cols-2">
+			<div className="grid min-h-136 md:grid-cols-2">
 				<div className="border-b border-zinc-200 bg-zinc-950 md:border-r md:border-b-0">
 					<div className="flex items-center justify-between border-b border-white/10 px-5 py-3 text-xs font-medium text-zinc-400">
 						<span>Raw chunk</span>
 						<span>{chunkNumber.current ? `#${chunkNumber.current} · ${latestChunkSize} bytes` : "Waiting"}</span>
 					</div>
-					<div className="h-[32rem] overflow-auto p-5 sm:p-6">
+					<div className="h-128 overflow-auto p-5 sm:p-6">
 						{latestChunk ? (
-							<div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
+							<div className="rounded-xl border border-white/10 bg-white/4 p-4">
 								<p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-400">
 									Chunk {chunkNumber.current}
 								</p>
@@ -279,7 +283,7 @@ export function StreamMarkdown({ className, ...props }: TStreamMarkdownProps) {
 						<span>Rendered frame</span>
 						<span>{chunkNumber.current ? `After chunk #${chunkNumber.current}` : "Comark"}</span>
 					</div>
-					<div className="h-[32rem] overflow-auto p-6 sm:p-8" aria-live="polite">
+					<div className="h-128 overflow-auto p-6 sm:p-8" aria-live="polite">
 						{document ? (
 							<MarkdownDocument
 								caret={isStreaming ? { class: "stream-markdown-caret" } : false}
