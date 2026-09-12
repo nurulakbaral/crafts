@@ -1,1 +1,119 @@
 @import "tailwindcss";
+
+@layer base {
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+		margin: 0;
+		font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	button,
+	a {
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+@layer components {
+	.stream-markdown-output {
+		color: #3f3f46;
+		font-size: 0.9375rem;
+		line-height: 1.75;
+	}
+
+	.stream-markdown-output h1,
+	.stream-markdown-output h2 {
+		color: #18181b;
+		font-weight: 650;
+		letter-spacing: -0.025em;
+	}
+
+	.stream-markdown-output h1 {
+		margin: 0 0 1rem;
+		font-size: 1.875rem;
+		line-height: 1.2;
+	}
+
+	.stream-markdown-output h2 {
+		margin: 1.75rem 0 0.75rem;
+		font-size: 1.125rem;
+	}
+
+	.stream-markdown-output p,
+	.stream-markdown-output ul,
+	.stream-markdown-output blockquote,
+	.stream-markdown-output pre,
+	.stream-markdown-output table {
+		margin: 0 0 1rem;
+	}
+
+	.stream-markdown-output ul {
+		padding-left: 1.25rem;
+		list-style: none;
+	}
+
+	.stream-markdown-output li {
+		margin: 0.25rem 0;
+	}
+
+	.stream-markdown-output input[type="checkbox"] {
+		margin-right: 0.5rem;
+		accent-color: #059669;
+	}
+
+	.stream-markdown-output a {
+		color: #047857;
+		text-decoration: underline;
+		text-decoration-color: #a7f3d0;
+		text-underline-offset: 0.2em;
+	}
+
+	.stream-markdown-output blockquote {
+		border-left: 3px solid #a7f3d0;
+		padding: 0.25rem 0 0.25rem 1rem;
+		color: #52525b;
+	}
+
+	.stream-markdown-output :not(pre) > code {
+		border-radius: 0.35rem;
+		background: #f4f4f5;
+		padding: 0.15rem 0.35rem;
+		color: #18181b;
+		font-size: 0.85em;
+	}
+
+	.stream-markdown-output pre {
+		overflow-x: auto;
+		border-radius: 0.75rem;
+		background: #18181b;
+		padding: 1rem;
+		color: #e4e4e7;
+		font-size: 0.8rem;
+		line-height: 1.6;
+	}
+
+	.stream-markdown-output table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.875rem;
+	}
+
+	.stream-markdown-output th,
+	.stream-markdown-output td {
+		border-bottom: 1px solid #e4e4e7;
+		padding: 0.5rem;
+		text-align: left;
+	}
+
+	.stream-markdown-output th {
+		color: #18181b;
+		font-weight: 600;
+	}
+
+	.stream-markdown-caret {
+		border-radius: 9999px;
+	}
+}
