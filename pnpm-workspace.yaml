@@ -7,12 +7,13 @@ packages:
   - "_playgrounds/vibe-coding-ui"
   - "_playgrounds/pi-agent"
   - "_playgrounds/vgpu"
+  - "_playgrounds/comark"
   - "examples/react-app"
   - "examples/express-api"
   - "examples/nodejs"
 allowBuilds:
   "@google/genai": true
-  '@vgpu/adapter-node': true
+  "@vgpu/adapter-node": true
   esbuild: true
   msw: true
   protobufjs: true
